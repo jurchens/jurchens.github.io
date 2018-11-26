@@ -11,4 +11,15 @@
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title><![CDATA[Install Docker CE]]></title>
+    <url>%2F2018%2F11%2F26%2FInstall_Docker_CE%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
 </search>

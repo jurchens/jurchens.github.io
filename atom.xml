@@ -41,4 +41,22 @@
     
   </entry>
   
+  <entry>
+    <title>Install Docker CE</title>
+    <link href="http://yoursite.com/2018/11/26/Install_Docker_CE/"/>
+    <id>http://yoursite.com/2018/11/26/Install_Docker_CE/</id>
+    <published>2018-11-26T10:36:17.725Z</published>
+    <updated>2018-11-26T10:36:17.725Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+  </entry>
+  
 </feed>
