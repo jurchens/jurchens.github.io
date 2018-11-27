@@ -81,15 +81,18 @@
 
 
 
+<meta name="description" content="官网安装地址: https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository 1.安装依赖包 yum install -y yum-utils device-mapper-persistent-data lvm2 2.添加Docker 镜像仓库 yum-config-manager --ad">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Install Docker CE">
 <meta property="og:url" content="http://yoursite.com/2018/11/26/Install_Docker_CE/index.html">
 <meta property="og:site_name" content="Jurchens&#39;s Blog">
+<meta property="og:description" content="官网安装地址: https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository 1.安装依赖包 yum install -y yum-utils device-mapper-persistent-data lvm2 2.添加Docker 镜像仓库 yum-config-manager --ad">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-26T10:36:17.725Z">
+<meta property="og:updated_time" content="2018-11-27T01:21:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install Docker CE">
+<meta name="twitter:description" content="官网安装地址: https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository 1.安装依赖包 yum install -y yum-utils device-mapper-persistent-data lvm2 2.添加Docker 镜像仓库 yum-config-manager --ad">
 
 
 
@@ -313,7 +316,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T05:36:17-05:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-26T20:22:44-05:00">
                 2018-11-26
               </time>
             
@@ -373,7 +376,23 @@
       
 
       
-        
+        <p>官网安装地址:</p>
+<p><a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository</a></p>
+<p>1.安装依赖包</p>
+<pre><code>yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre><p>2.添加Docker 镜像仓库</p>
+<pre><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre><p>3.启用edge 和 test 仓库</p>
+<pre><code>yum-config-manager --enable docker-ce-edge
+
+yum-config-manager --enable docker-ce-test
+</code></pre><p>4.安装Docker CE</p>
+<pre><code>yum install docker-ce
+</code></pre><p>5.启动Docker</p>
+<pre><code>systemctl start docker
+</code></pre><p>6.设置开机启动</p>
+<pre><code>systemctl enable docker
+</code></pre>
       
     </div>
     
@@ -403,15 +422,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/26/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-26T10:21:54.224Z</updated>
+  <updated>2018-11-27T01:21:18.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Install Docker CE</title>
+    <link href="http://yoursite.com/2018/11/26/Install_Docker_CE/"/>
+    <id>http://yoursite.com/2018/11/26/Install_Docker_CE/</id>
+    <published>2018-11-27T01:22:44.775Z</published>
+    <updated>2018-11-27T01:21:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>官网安装地址:</p><p><a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository</a></p><p>1.安装依赖包</p><pre><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></pre><p>2.添加Docker 镜像仓库</p><pre><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></pre><p>3.启用edge 和 test 仓库</p><pre><code>yum-config-manager --enable docker-ce-edgeyum-config-manager --enable docker-ce-test</code></pre><p>4.安装Docker CE</p><pre><code>yum install docker-ce</code></pre><p>5.启动Docker</p><pre><code>systemctl start docker</code></pre><p>6.设置开机启动</p><pre><code>systemctl enable docker</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;官网安装地址:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository&quot; target=&quot;_blank&quot; rel=&quot;noopen
+      
+    
+    </summary>
+    
+      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
+    
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -38,24 +64,6 @@
     
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Install Docker CE</title>
-    <link href="http://yoursite.com/2018/11/26/Install_Docker_CE/"/>
-    <id>http://yoursite.com/2018/11/26/Install_Docker_CE/</id>
-    <published>2018-11-26T10:36:17.725Z</published>
-    <updated>2018-11-26T10:36:17.725Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Docker" scheme="http://yoursite.com/categories/Docker/"/>
-    
-    
-      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
     
   </entry>
   
