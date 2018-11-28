@@ -283,6 +283,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/turnserver_supervisor__log_没有时间戳的解决方案/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jurchens">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jurchens's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/turnserver_supervisor__log_没有时间戳的解决方案/" itemprop="url">turnserver supervisor 的stdout log 没有时间戳问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T22:06:44-05:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考链接：</p>
+<p><a href="https://github.com/Supervisor/supervisor/issues/553" target="_blank" rel="noopener">https://github.com/Supervisor/supervisor/issues/553</a></p>
+<p>1.编写turnserver 运行脚本 run-worker.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash </span><br><span class="line">WORKER_NAME=$1 </span><br><span class="line">bash -c &apos;turnserver -c /etc/turnserver/&quot;$WORKER_NAME&quot;.conf -v | ts &apos;&quot;&apos;&quot;&apos;[%Y-%m-%d %H:%M:%S]&apos;&quot;&apos;&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果没有ts 命令，需要安装 moreutils 包</li>
+<li>yum install moreutils</li>
+</ul>
+<p>2.配置supervisor turnserver.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:turnserver]</span><br><span class="line">command = /etc/supervisor/conf.d/run-worker.sh &quot;turnserver&quot;</span><br><span class="line">user = airdroid</span><br><span class="line">autostart = true</span><br><span class="line">autorestart = true</span><br><span class="line">stdout_logfile = /var/log/supervisor/turnserver.info.log</span><br><span class="line">stdout_logfile_maxbytes = 100MB</span><br><span class="line">stdout_logfile_backups = 5</span><br><span class="line">stderr_logfile = /var/log/supervisor/turnserver.error.log</span><br></pre></td></tr></table></figure>
+<p>3.日志效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_32_5_centos ~]# tailf /var/log/supervisor/turnserver.info.log </span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3478</span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. UDP listener opened on: 192.168.0.1:3479</span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3479</span><br><span class="line">[2018-11-28 02:22:02] 0: Total General servers: 2</span><br><span class="line">[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)</span><br><span class="line">[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)</span><br><span class="line">[2018-11-28 02:22:02] 0: ERROR: Cannot open SQLite DB connection: &lt;/var/db/turndb&gt;, runtime error:</span><br><span class="line">[2018-11-28 02:22:02]   unable to open database file</span><br><span class="line">[2018-11-28 02:22:02]   (If your intention is to use an SQLite database for the TURN server, then</span><br><span class="line">[2018-11-28 02:22:02]   check and fix, if necessary, the effective permissions of the TURN server</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/Install_Docker_CE/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -623,7 +754,7 @@ yum-config-manager --enable docker-ce-test
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -645,7 +776,7 @@ yum-config-manager --enable docker-ce-test
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

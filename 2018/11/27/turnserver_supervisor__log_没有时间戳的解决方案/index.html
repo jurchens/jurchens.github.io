@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="webrtc,turnserver,">
 
 
 
@@ -81,14 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="参考链接： https://github.com/Supervisor/supervisor/issues/553 1.编写turnserver 运行脚本 run-worker.sh 123#!/bin/bash WORKER_NAME=$1 bash -c &amp;apos;turnserver -c /etc/turnserver/&amp;quot;$WORKER_NAME&amp;quot;.conf -v |">
+<meta name="keywords" content="webrtc,turnserver">
+<meta property="og:type" content="article">
+<meta property="og:title" content="turnserver supervisor 的stdout log 没有时间戳问题">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/turnserver_supervisor__log_没有时间戳的解决方案/index.html">
 <meta property="og:site_name" content="Jurchens&#39;s Blog">
+<meta property="og:description" content="参考链接： https://github.com/Supervisor/supervisor/issues/553 1.编写turnserver 运行脚本 run-worker.sh 123#!/bin/bash WORKER_NAME=$1 bash -c &amp;apos;turnserver -c /etc/turnserver/&amp;quot;$WORKER_NAME&amp;quot;.conf -v |">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-26T09:19:18.675Z">
+<meta property="og:updated_time" content="2018-11-28T03:05:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="turnserver supervisor 的stdout log 没有时间戳问题">
+<meta name="twitter:description" content="参考链接： https://github.com/Supervisor/supervisor/issues/553 1.编写turnserver 运行脚本 run-worker.sh 123#!/bin/bash WORKER_NAME=$1 bash -c &amp;apos;turnserver -c /etc/turnserver/&amp;quot;$WORKER_NAME&amp;quot;.conf -v |">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/turnserver_supervisor__log_没有时间戳的解决方案/">
 
 
 
 
 
-  <title>tags | Jurchens's Blog</title>
+  <title>turnserver supervisor 的stdout log 没有时间戳问题 | Jurchens's Blog</title>
   
 
 
@@ -271,40 +275,157 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/turnserver_supervisor__log_没有时间戳的解决方案/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jurchens">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jurchens's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                4 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Docker/" style="font-size: 12px; color: #ccc">Docker</a> <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/turnserver/" style="font-size: 12px; color: #ccc">turnserver</a> <a href="/tags/webrtc/" style="font-size: 12px; color: #ccc">webrtc</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">turnserver supervisor 的stdout log 没有时间戳问题</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T22:06:44-05:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>参考链接：</p>
+<p><a href="https://github.com/Supervisor/supervisor/issues/553" target="_blank" rel="noopener">https://github.com/Supervisor/supervisor/issues/553</a></p>
+<p>1.编写turnserver 运行脚本 run-worker.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash </span><br><span class="line">WORKER_NAME=$1 </span><br><span class="line">bash -c &apos;turnserver -c /etc/turnserver/&quot;$WORKER_NAME&quot;.conf -v | ts &apos;&quot;&apos;&quot;&apos;[%Y-%m-%d %H:%M:%S]&apos;&quot;&apos;&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果没有ts 命令，需要安装 moreutils 包</li>
+<li>yum install moreutils</li>
+</ul>
+<p>2.配置supervisor turnserver.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[program:turnserver]</span><br><span class="line">command = /etc/supervisor/conf.d/run-worker.sh &quot;turnserver&quot;</span><br><span class="line">user = airdroid</span><br><span class="line">autostart = true</span><br><span class="line">autorestart = true</span><br><span class="line">stdout_logfile = /var/log/supervisor/turnserver.info.log</span><br><span class="line">stdout_logfile_maxbytes = 100MB</span><br><span class="line">stdout_logfile_backups = 5</span><br><span class="line">stderr_logfile = /var/log/supervisor/turnserver.error.log</span><br></pre></td></tr></table></figure>
+<p>3.日志效果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_32_5_centos ~]# tailf /var/log/supervisor/turnserver.info.log </span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3478</span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. UDP listener opened on: 192.168.0.1:3479</span><br><span class="line">[2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3479</span><br><span class="line">[2018-11-28 02:22:02] 0: Total General servers: 2</span><br><span class="line">[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)</span><br><span class="line">[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)</span><br><span class="line">[2018-11-28 02:22:02] 0: ERROR: Cannot open SQLite DB connection: &lt;/var/db/turndb&gt;, runtime error:</span><br><span class="line">[2018-11-28 02:22:02]   unable to open database file</span><br><span class="line">[2018-11-28 02:22:02]   (If your intention is to use an SQLite database for the TURN server, then</span><br><span class="line">[2018-11-28 02:22:02]   check and fix, if necessary, the effective permissions of the TURN server</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webrtc/" rel="tag"><i class="fa fa-tag"></i> webrtc</a>
+          
+            <a href="/tags/turnserver/" rel="tag"><i class="fa fa-tag"></i> turnserver</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/26/Install_Docker_CE/" rel="next" title="Install Docker CE">
+                <i class="fa fa-chevron-left"></i> Install Docker CE
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

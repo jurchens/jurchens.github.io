@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[turnserver supervisor 的stdout log 没有时间戳问题]]></title>
+    <url>%2F2018%2F11%2F27%2Fturnserver_supervisor__log_%E6%B2%A1%E6%9C%89%E6%97%B6%E9%97%B4%E6%88%B3%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[参考链接： https://github.com/Supervisor/supervisor/issues/553 1.编写turnserver 运行脚本 run-worker.sh 123#!/bin/bash WORKER_NAME=$1 bash -c &apos;turnserver -c /etc/turnserver/&quot;$WORKER_NAME&quot;.conf -v | ts &apos;&quot;&apos;&quot;&apos;[%Y-%m-%d %H:%M:%S]&apos;&quot;&apos;&quot; 如果没有ts 命令，需要安装 moreutils 包 yum install moreutils 2.配置supervisor turnserver.conf 123456789[program:turnserver]command = /etc/supervisor/conf.d/run-worker.sh &quot;turnserver&quot;user = airdroidautostart = trueautorestart = truestdout_logfile = /var/log/supervisor/turnserver.info.logstdout_logfile_maxbytes = 100MBstdout_logfile_backups = 5stderr_logfile = /var/log/supervisor/turnserver.error.log 3.日志效果 1234567891011[root@VM_32_5_centos ~]# tailf /var/log/supervisor/turnserver.info.log [2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3478[2018-11-28 02:22:02] 0: IPv4. UDP listener opened on: 192.168.0.1:3479[2018-11-28 02:22:02] 0: IPv4. TCP listener opened on : 192.168.0.1:3479[2018-11-28 02:22:02] 0: Total General servers: 2[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)[2018-11-28 02:22:02] 0: IO method (auth thread): epoll (with changelist)[2018-11-28 02:22:02] 0: ERROR: Cannot open SQLite DB connection: &lt;/var/db/turndb&gt;, runtime error:[2018-11-28 02:22:02] unable to open database file[2018-11-28 02:22:02] (If your intention is to use an SQLite database for the TURN server, then[2018-11-28 02:22:02] check and fix, if necessary, the effective permissions of the TURN server]]></content>
+      <tags>
+        <tag>webrtc</tag>
+        <tag>turnserver</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Install Docker CE]]></title>
     <url>%2F2018%2F11%2F26%2FInstall_Docker_CE%2F</url>
     <content type="text"><![CDATA[官网安装地址: https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository 1.安装依赖包 yum install -y yum-utils device-mapper-persistent-data lvm2 2.添加Docker 镜像仓库 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 3.启用edge 和 test 仓库 yum-config-manager --enable docker-ce-edge yum-config-manager --enable docker-ce-test 4.安装Docker CE yum install docker-ce 5.启动Docker systemctl start docker 6.设置开机启动 systemctl enable docker]]></content>
