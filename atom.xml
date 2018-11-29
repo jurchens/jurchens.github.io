@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-28T03:14:56.052Z</updated>
+  <updated>2018-11-29T06:30:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker 部署redash</title>
+    <link href="http://yoursite.com/2018/11/29/Docker_Deploy_redash/"/>
+    <id>http://yoursite.com/2018/11/29/Docker_Deploy_redash/</id>
+    <published>2018-11-29T06:34:10.155Z</published>
+    <updated>2018-11-29T06:30:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考链接:</p><p><a href="https://zhuanlan.zhihu.com/p/31292944" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31292944</a></p><p><a href="https://blog.csdn.net/diantun00/article/details/80968604" target="_blank" rel="noopener">https://blog.csdn.net/diantun00/article/details/80968604</a></p><p>gitbub 地址: <a href="https://github.com/getredash/redash" target="_blank" rel="noopener">https://github.com/getredash/redash</a></p><ol><li><p>通过git 方式下载redash</p><pre><code>git clone git@github.com:getredash/redash.git</code></pre><p>如果不能下载,直接登陆github,下载包，解压</p><pre><code> wget https://github.com/getredash/redash/archive/master.zipunzip master.zip</code></pre></li></ol><p>2.进入到redash 目录</p><pre><code>cd redash</code></pre><p>3.编辑docker-compose.production.yml 文件,将数据目录映射出来</p><p>4.数据库初始化</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f docker-compose.production.yml run --rm server create_db</span><br></pre></td></tr></table></figure><p>如果没有docker-compose ,执行下列命令安装</p><pre><code>pip install docker-compose</code></pre><p>5.启动容器，时间有点久，网络差的先出去旅个游，回去未必能装好</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f docker-compose.production.yml up</span><br></pre></td></tr></table></figure><ul><li>备注</li></ul><hr><blockquote><p>如果访问宿主机的数据库服务，注意放行docker 容器IP 比如： 172.17.0.0/16 和172.18.0.0/16 ,保存，重启docker重启</p></blockquote><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;参考链接:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/31292944&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://zhuanlan.zhihu.com/p/31292944&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="redash" scheme="http://yoursite.com/categories/redash/"/>
+    
+    
+      <category term="redash" scheme="http://yoursite.com/tags/redash/"/>
+    
+      <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>turnserver supervisor 的stdout log 没有时间戳问题</title>
