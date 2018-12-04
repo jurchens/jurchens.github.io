@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-29T06:30:30.000Z</updated>
+  <updated>2018-12-04T01:38:07.037Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>：decode 和 encode 知识总结</title>
+    <link href="http://yoursite.com/2018/12/03/decode_%E5%92%8C_encode_%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/12/03/decode_和_encode_知识总结/</id>
+    <published>2018-12-04T01:38:07.037Z</published>
+    <updated>2018-12-04T01:38:07.037Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="为解决世界各地区编码问题，引出了unicode-编码，通常我们将其他编码转换成unicode-码，使用decode-转换，比如常见的中文转换unicode-将unicode-转换成其他编码-使用encode"><a href="#为解决世界各地区编码问题，引出了unicode-编码，通常我们将其他编码转换成unicode-码，使用decode-转换，比如常见的中文转换unicode-将unicode-转换成其他编码-使用encode" class="headerlink" title="为解决世界各地区编码问题，引出了unicode 编码，通常我们将其他编码转换成unicode 码，使用decode 转换，比如常见的中文转换unicode, 将unicode 转换成其他编码,使用encode"></a>为解决世界各地区编码问题，引出了unicode 编码，通常我们将其他编码转换成unicode 码，使用decode 转换，比如常见的中文转换unicode, 将unicode 转换成其他编码,使用encode</h5><p>1.将中文转换成unicode</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">方法1：</span><br><span class="line">&gt;&gt;&gt; a = u&apos;编程&apos;</span><br><span class="line">&gt;&gt;&gt; print a</span><br><span class="line">编程</span><br><span class="line">&gt;&gt;&gt; len(a)</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line"></span><br><span class="line">方法2：</span><br><span class="line">&gt;&gt;&gt; a = &apos;编程&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">&gt;&gt;&gt; print a</span><br><span class="line">编程</span><br><span class="line">&gt;&gt;&gt; len(a)</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure><ol start="2"><li>将unicode 转换 其他编码</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = &apos;编程&apos;</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&apos;\xe7\xbc\x96\xe7\xa8\x8b&apos;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; a = &apos;编程&apos;.decode(&apos;utf-8&apos;)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">u&apos;\u7f16\u7a0b&apos;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print u&apos;\u7f16\u7a0b&apos;.encode(&apos;utf-8&apos;)</span><br><span class="line">编程</span><br></pre></td></tr></table></figure><p>3.脚本使用unicode </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#coding=utf-8</span><br><span class="line">a = &quot;中文&quot;</span><br><span class="line">print len(a)</span><br><span class="line"></span><br><span class="line"># 结果还是6个字符，并没有因为设置了utf-8 格式而改变</span><br><span class="line">[root@mail ~]# python unicode.py </span><br><span class="line">6</span><br><span class="line"></span><br><span class="line">#修改代码</span><br><span class="line">#coding=utf-8</span><br><span class="line">a = &quot;中文&quot;.decode(&apos;utf-8&apos;)</span><br><span class="line">print len(a)</span><br><span class="line"></span><br><span class="line">#打印结果</span><br><span class="line">[root@mail ~]# python unicode.py </span><br><span class="line">2</span><br></pre></td></tr></table></figure><p>这里做个简单的介绍和对比</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;为解决世界各地区编码问题，引出了unicode-编码，通常我们将其他编码转换成unicode-码，使用decode-转换，比如常见的中文转换unicode-将unicode-转换成其他编码-使用encode&quot;&gt;&lt;a href=&quot;#为解决世界各地区编码问题，引出了u
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="unicode" scheme="http://yoursite.com/tags/unicode/"/>
+    
+      <category term="decode" scheme="http://yoursite.com/tags/decode/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="encode" scheme="http://yoursite.com/tags/encode/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker 部署redash</title>

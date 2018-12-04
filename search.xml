@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[：decode 和 encode 知识总结]]></title>
+    <url>%2F2018%2F12%2F03%2Fdecode_%E5%92%8C_encode_%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[为解决世界各地区编码问题，引出了unicode 编码，通常我们将其他编码转换成unicode 码，使用decode 转换，比如常见的中文转换unicode, 将unicode 转换成其他编码,使用encode1.将中文转换成unicode 123456789101112131415方法1：&gt;&gt;&gt; a = u&apos;编程&apos;&gt;&gt;&gt; print a编程&gt;&gt;&gt; len(a)2&gt;&gt;&gt; 方法2：&gt;&gt;&gt; a = &apos;编程&apos;.decode(&apos;utf-8&apos;)&gt;&gt;&gt; print a编程&gt;&gt;&gt; len(a)2&gt;&gt;&gt; 将unicode 转换 其他编码 12345678910&gt;&gt;&gt; a = &apos;编程&apos;&gt;&gt;&gt; a&apos;\xe7\xbc\x96\xe7\xa8\x8b&apos;&gt;&gt;&gt; a = &apos;编程&apos;.decode(&apos;utf-8&apos;)&gt;&gt;&gt; au&apos;\u7f16\u7a0b&apos;&gt;&gt;&gt; print u&apos;\u7f16\u7a0b&apos;.encode(&apos;utf-8&apos;)编程 3.脚本使用unicode 12345678910111213141516#coding=utf-8a = &quot;中文&quot;print len(a)# 结果还是6个字符，并没有因为设置了utf-8 格式而改变[root@mail ~]# python unicode.py 6#修改代码#coding=utf-8a = &quot;中文&quot;.decode(&apos;utf-8&apos;)print len(a)#打印结果[root@mail ~]# python unicode.py 2 这里做个简单的介绍和对比]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>unicode</tag>
+        <tag>decode</tag>
+        <tag>python</tag>
+        <tag>encode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Docker 部署redash]]></title>
     <url>%2F2018%2F11%2F29%2FDocker_Deploy_redash%2F</url>
     <content type="text"><![CDATA[参考链接: https://zhuanlan.zhihu.com/p/31292944 https://blog.csdn.net/diantun00/article/details/80968604 gitbub 地址: https://github.com/getredash/redash 通过git 方式下载redash git clone git@github.com:getredash/redash.git 如果不能下载,直接登陆github,下载包，解压 wget https://github.com/getredash/redash/archive/master.zip unzip master.zip 2.进入到redash 目录 cd redash 3.编辑docker-compose.production.yml 文件,将数据目录映射出来 4.数据库初始化 1docker-compose -f docker-compose.production.yml run --rm server create_db 如果没有docker-compose ,执行下列命令安装 pip install docker-compose 5.启动容器，时间有点久，网络差的先出去旅个游，回去未必能装好 1docker-compose -f docker-compose.production.yml up 备注 如果访问宿主机的数据库服务，注意放行docker 容器IP 比如： 172.17.0.0/16 和172.18.0.0/16 ,保存，重启docker重启]]></content>
